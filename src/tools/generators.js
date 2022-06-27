@@ -1,4 +1,4 @@
-import { LayoutError } from "../exceptions/layout.js";
+import { LayoutError } from "../exceptions/Layout.js";
 
 export async function generateStaticKeyboard(layout, data) {
     return await generateKeyboard(layout, data, 0, data.length, async (data) => { }, async (data, storage, counter) => data);
