@@ -18,7 +18,7 @@ async function generateKeyboard(layout, data, start, end, callbackUse, callbackM
     labelEnd: for (let i = 0; i < layout.length - cutEnd; i++) {
         let generateButtons = [];
         for (let j = 0; j < layout[i]; j++) {
-            if (counter == end) break labelEnd;
+            if (counter === end) break labelEnd;
             const button = await callbackMap(data[counter], storage, counter);
             if (!button) {
                 counter++;
@@ -27,7 +27,7 @@ async function generateKeyboard(layout, data, start, end, callbackUse, callbackM
             generateButtons.push(button);
             counter++;
         }
-        if (!generateButtons.length == 0) keyboard.push(generateButtons);
+        if (!generateButtons.length === 0) keyboard.push(generateButtons);
     }
     return keyboard;
 }
