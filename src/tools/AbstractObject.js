@@ -1,4 +1,4 @@
-import { generateDynamicKeyboard, generateStaticKeyboard } from "./generators.js";
+import {generateDynamicKeyboard, generateStaticKeyboard} from "./generators.js";
 
 export let StaticAbstractKeyboard = {
     _type: "static",
@@ -55,5 +55,12 @@ export let DynamicInlineKeyboardCreator = {
         return {
             inline_keyboard: await generateDynamicKeyboard(this._layout, this._data, this._dataStart, this._dataEnd, this._use, this._map)
         };
+    }
+}
+
+export let LayoutBuilder = {
+    layout(callback) {
+        this._layout = callback;
+        return this;
     }
 }

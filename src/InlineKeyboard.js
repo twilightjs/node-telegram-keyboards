@@ -1,4 +1,10 @@
-import { StaticAbstractKeyboard, DynamicAbstractKeyboard, StaticInlineKeyboardCreator, DynamicInlineKeyboardCreator } from "./tools/AbstractObject.js";
+import {
+    StaticAbstractKeyboard,
+    DynamicAbstractKeyboard,
+    StaticInlineKeyboardCreator,
+    DynamicInlineKeyboardCreator,
+    LayoutBuilder
+} from "./tools/AbstractObject.js";
 
 export class InlineKeyboardSelector {
     static() {
@@ -13,17 +19,20 @@ export class InlineKeyboardSelector {
 class InlineKeyboard {
     _format = "inlineKeyboard";
     _layout;
-
-    layout(values) {
-        this._layout = values;
-        return this;
-    }
 }
 
-export class InlineStaticKeyboard extends InlineKeyboard { _type = "static"; }
+Object.assign(InlineKeyboard.prototype, LayoutBuilder);
+
+export class InlineStaticKeyboard extends InlineKeyboard {
+    _type = "static";
+}
+
 Object.assign(InlineStaticKeyboard.prototype, StaticAbstractKeyboard, StaticInlineKeyboardCreator);
 
-export class InlineDynamicKeyboard extends InlineKeyboard { _type = "dynamic"; }
+export class InlineDynamicKeyboard extends InlineKeyboard {
+    _type = "dynamic";
+}
+
 Object.assign(InlineDynamicKeyboard.prototype, DynamicAbstractKeyboard, DynamicInlineKeyboardCreator);
 
 export class InlineKeyboardButton {

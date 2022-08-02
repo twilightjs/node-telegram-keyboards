@@ -1,4 +1,10 @@
-import { StaticAbstractKeyboard, DynamicAbstractKeyboard, StaticReplyKeyboardCreator, DynamicReplyKeyboardCreator } from "./tools/AbstractObject.js";
+import {
+    StaticAbstractKeyboard,
+    DynamicAbstractKeyboard,
+    StaticReplyKeyboardCreator,
+    DynamicReplyKeyboardCreator,
+    LayoutBuilder
+} from "./tools/AbstractObject.js";
 
 export class ReplyKeyboardSelector {
     static() {
@@ -12,7 +18,6 @@ export class ReplyKeyboardSelector {
 
 class ReplyKeyboard {
     _format = "keyboard";
-    _layout;
     _field = {};
 
     resize() {
@@ -34,17 +39,20 @@ class ReplyKeyboard {
         this._field.selective = true;
         return this;
     }
-
-    layout(values) {
-        this._layout = values;
-        return this;
-    }
 }
 
-export class StaticReplyKeyboard extends ReplyKeyboard { _type = "static"; }
+Object.assign(ReplyKeyboard.prototype, LayoutBuilder);
+
+export class StaticReplyKeyboard extends ReplyKeyboard {
+    _type = "static";
+}
+
 Object.assign(StaticReplyKeyboard.prototype, StaticAbstractKeyboard, StaticReplyKeyboardCreator);
 
-export class DynamicReplyKeyboard extends ReplyKeyboard { _type = "dynamic"; }
+export class DynamicReplyKeyboard extends ReplyKeyboard {
+    _type = "dynamic";
+}
+
 Object.assign(DynamicReplyKeyboard.prototype, DynamicAbstractKeyboard, DynamicReplyKeyboardCreator);
 
 export class ReplyKeyboardButton {
