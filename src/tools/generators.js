@@ -10,7 +10,7 @@ export async function generateDynamicKeyboard(callbackLayout, data, start, end, 
 }
 
 async function generateKeyboard(callbackLayout, data, start, end, callbackUse, callbackMap) {
-    const layout = (typeof callbackLayout) === Array ? callbackLayout : callbackLayout(data, new TemplateLayout(data));
+    const layout = (typeof callbackLayout) === "object" ? callbackLayout : callbackLayout(data, new TemplateLayout(data));
     if (layout.length > data.length) throw new LayoutError("Cannot to make markup according to this layout");
     const keyboard = [];
     let storage = {};
