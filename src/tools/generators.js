@@ -34,7 +34,7 @@ async function generateKeyboard(callbackLayout, data, start, end, callbackUse, c
     return keyboard;
 }
 
-class TemplateLayout {
+export class TemplateLayout {
     _data;
 
     constructor(data) {

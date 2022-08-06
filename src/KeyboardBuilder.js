@@ -1,6 +1,6 @@
 import {InlineKeyboardSelector, InlineStaticKeyboard} from "./InlineKeyboard.js";
 import {DynamicReplyKeyboard, ReplyKeyboardSelector, StaticReplyKeyboard} from "./ReplyKeyboard.js";
-import * as fs from 'node:fs';
+import {TemplateLayout} from "./tools/generators.js";
 import {writeFile, readFile} from "node:fs";
 
 export class KeyboardBuilder {
@@ -36,7 +36,7 @@ export class KeyboardBuilder {
         let json = {
             format: keyboard._format,
             type: keyboard._type,
-            layout: keyboard._layout,
+            layout: keyboard._layout(keyboard._data, new TemplateLayout(keyboard._data)),
         };
         if (keyboard._type === "static") json.data = keyboard._data;
         if (keyboard._format === "keyboard") json.field = keyboard._field;
