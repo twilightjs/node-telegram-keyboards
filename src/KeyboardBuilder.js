@@ -1,7 +1,7 @@
-import {InlineKeyboardSelector, InlineStaticKeyboard} from "./InlineKeyboard.js";
-import {DynamicReplyKeyboard, ReplyKeyboardSelector, StaticReplyKeyboard} from "./ReplyKeyboard.js";
-import {TemplateLayout} from "./tools/generators.js";
-import {writeFile, readFile} from "node:fs";
+import { InlineKeyboardSelector } from "./InlineKeyboard.js";
+import { ReplyKeyboardSelector } from "./ReplyKeyboard.js";
+import { TemplateLayout } from "./tools/generators.js";
+import { writeFile, readFile } from "node:fs";
 
 export class KeyboardBuilder {
     static keyboard() {
@@ -15,7 +15,8 @@ export class KeyboardBuilder {
     static assign(type, keyboards) {
         let finishedKeyboard = keyboards[0];
         for (let i = 1; i < keyboards.length; i++) {
-            for (let j = 0; j < (keyboards.length - 1); j++) {
+            for (let j = 0; j <= keyboards.length; j++) {
+                if (!(keyboards[i][type][j])) break;
                 finishedKeyboard[type].push(keyboards[i][type][j]);
             }
         }
@@ -50,7 +51,7 @@ export class KeyboardBuilder {
     static async templateFromJSON(pathToJSON) {
         return new Promise((resolve, reject) => {
             readFile(pathToJSON, (err, data) => {
-                if (err) throw reject(err);
+                if (err) reject(err);
                 resolve(this.#templateJSON(JSON.parse(data.toString())));
             });
         });

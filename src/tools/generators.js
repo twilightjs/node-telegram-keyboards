@@ -1,8 +1,7 @@
-import {LayoutError} from "../exceptions/Layout.js";
+import { LayoutError } from "../exceptions/Layout.js";
 
 export async function generateStaticKeyboard(callbackLayout, data) {
-    return await generateKeyboard(callbackLayout, data, 0, data.length, async (data) => {
-    }, async (data, storage, counter) => data);
+    return await generateKeyboard(callbackLayout, data, 0, data.length, async (storage, data) => { }, async (data, storage, counter) => data);
 }
 
 export async function generateDynamicKeyboard(callbackLayout, data, start, end, use, map) {
@@ -16,7 +15,7 @@ async function generateKeyboard(callbackLayout, data, start, end, callbackUse, c
     let storage = {};
     await callbackUse(storage, data);
     let counter = start;
-    const cutEnd = layout.reduce((previousValue, currentValue) => previousValue + currentValue) - data.length;
+    const cutEnd = layout.reduce((previousValue, currentValue) => previousValue + currentValue, 0) - data.length;
     labelEnd: for (let i = 0; i < layout.length - cutEnd; i++) {
         let generateButtons = [];
         for (let j = 0; j < layout[i]; j++) {

@@ -1,4 +1,4 @@
-import {generateDynamicKeyboard, generateStaticKeyboard} from "./generators.js";
+import { generateDynamicKeyboard, generateStaticKeyboard } from "./generators.js";
 
 export let StaticAbstractKeyboard = {
     _type: "static",
@@ -37,7 +37,7 @@ export let StaticReplyKeyboardCreator = {
 
 export let DynamicReplyKeyboardCreator = {
     async build() {
-        this._field.keyboard = await generateDynamicKeyboard(this._layout, this._data, this._dataStart, this._dataEnd, this._use, this._map);
+        this._field.keyboard = await generateDynamicKeyboard(this._layout, this._data, this._dataStart, this._dataEnd, this._use = async (storage, data) => { }, this._map);
         return this._field;
     }
 }
@@ -53,7 +53,7 @@ export let StaticInlineKeyboardCreator = {
 export let DynamicInlineKeyboardCreator = {
     async build() {
         return {
-            inline_keyboard: await generateDynamicKeyboard(this._layout, this._data, this._dataStart, this._dataEnd, this._use, this._map)
+            inline_keyboard: await generateDynamicKeyboard(this._layout, this._data, this._dataStart, this._dataEnd, this._use = async (storage, data) => { }, this._map)
         };
     }
 }

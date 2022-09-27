@@ -18,10 +18,6 @@ Twilight.js telegram-keyboards is an asynchronous library that allows you to gen
 ## Examples
 
 ```javascript
-import { InlineKeyboardButton } from "./InlineKeyboard.js";
-import { ReplyKeyboardButton } from "./ReplyKeyboard.js";
-import { KeyboardBuilder } from "./KeyboardBuilder.js";
-
 async function replyKeyboardStatic() {
     const keyboard = await KeyboardBuilder.keyboard().static()
         .buttons([
@@ -31,7 +27,7 @@ async function replyKeyboardStatic() {
             ReplyKeyboardButton.poll("example", "quiz"),
             ReplyKeyboardButton.webApp("example", "https://example.site/")
         ])
-        .layout([1, 1, 1, 1, 1])
+        .layout((data, template) => template.topToBottom())
         .build();
 }
 
@@ -42,7 +38,6 @@ async function replyKeyboardDynamic() {
             storage.counter = 0;
         })
         .map(async (element, storage, positionIndex) => {
-            console.log(storage.counter);
             if (positionIndex % 2 == 0) {
                 storage.counter = + positionIndex;
                 return ReplyKeyboardButton.text(storage.counter);
@@ -50,7 +45,7 @@ async function replyKeyboardDynamic() {
             storage.counter = + positionIndex;
             return ReplyKeyboardButton.text(element);
         })
-        .layout([1, 1, 1, 1, 1])
+        .layout((data, template) => template.topToBottom())
         .build();
 }
 
@@ -66,7 +61,7 @@ async function inlineKeyboardStatic() {
             InlineKeyboardButton.callbackGame("example", "callbackGame"),
             InlineKeyboardButton.pay("example")
         ])
-        .layout([4, 4])
+        .layout((data, template) => template.topToBottom())
         .build();
 }
 
@@ -77,7 +72,6 @@ async function inlineKeyboardDynamic() {
             storage.counter = 0;
         })
         .map(async (element, storage, positionIndex) => {
-            console.log(storage.counter);
             if (positionIndex % 2 == 0) {
                 storage.counter = + positionIndex;
                 return InlineKeyboardButton.callbackData(element, storage.counter);
@@ -85,7 +79,7 @@ async function inlineKeyboardDynamic() {
             storage.counter = + positionIndex;
             return InlineKeyboardButton.callbackData(element, positionIndex);
         })
-        .layout([4, 4])
+        .layout((data, template) => template.topToBottom())
         .build();
 }
 ```
