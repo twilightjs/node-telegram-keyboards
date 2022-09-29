@@ -18,7 +18,6 @@ export class InlineKeyboardSelector {
 
 class InlineKeyboard {
     _format = "inlineKeyboard";
-    _layout;
 }
 
 Object.assign(InlineKeyboard.prototype, LayoutBuilder);

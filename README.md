@@ -6,14 +6,39 @@
 
 Twilight.js telegram-keyboards is an asynchronous library that allows you to generate dynamic and static keyboards and allows you to save the finished keyboard template in json and return the keyboard back from the json templater
 
+## Table of Contents
+
+- [Features](#features)
+- [Installing](#installing)
+- [Examples](#examples)
+- [API reference](#api-reference)
+	- [KeyboardBuilder](#keyboardbuilder)
+	- [ReplyKeyboard reference](#replykeyboard-reference)
+		- [ReplyKeyboardSelector](#replykeyboard-selector)
+		- [StaticReplyKeyboard](#staticreplykeyboard)
+		- [DynamicReplyKeyboard](#dynamicreplykeyboard)
+		- [ReplyKeyboardButton](#replykeyboardbutton)
+	- [InlineKeyboard reference](#inlinekeyboard-reference)
+		- [InlineKeyboardSelector](#inlinekeyboardselector)
+		- [StaticInlineKeyboard](#staticinlinekeyboard)
+		- [DynamicInlineKeyboard](#dynamicinlinekeyboard)
+		- [InlineKeyboardButton](#inlinekeyboardbutton)
+    - [TemplateLayout](#templatelayout)
+
 
 ## Features
 
-- Template
-- Asynchronous
-- Handy
-- Cross platform
+- Easy to generate keyboards of any complexity
+- Easily save, create and use keyboard templates
+- Supports the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) API
 
+## Installing
+
+Using npm:
+
+```bash
+$ npm i node-telegram-keyboards
+```
 
 ## Examples
 
@@ -83,7 +108,29 @@ async function inlineKeyboardDynamic() {
         .build();
 }
 ```
+## API reference
+### KeyboardBuilder
+| Method |Description|
+| --------- | ------------ |
+| static keyboard() |Returns a static or dynamic ReplyKeyboard keyboard selector|
+| static inlineKeyboard() |Returns a static or dynamic InlineKeyboard keyboard selector|
+| static assign(type, keyboards) |Connects all keyboards into one|
+| static save(keyboard) |Converts ReplyKeyboard or InlineKeyboard objects to JSON object suitable for telegram|
+| static async saveToJSON(keyboard, filename) |Converts and saves ReplyKeyboard or InlineKeyboard objects to a JSON file that can be used as ready-made keyboard template|
+| static template(json) |Based on the keyboard template, builds a new ReplyKeyboard or InlineKeyboard object|
+| static async templateFromJSON(pathToJSON) |Reads a JSON file and creates a new ReplyKeyboard or InlineKeyboard object based on the keyboard template|
 
+### ReplyKeyboard reference
+### ReplyKeyboardSelector
+### StaticReplyKeyboard
+### DynamicReplyKeyboard
+### ReplyKeyboardButton
+### InlineKeyboard reference
+### InlineKeyboardSelector
+### StaticInlineKeyboard
+### DynamicInlineKeyboard
+### InlineKeyboardButton
+### TemplateLayout
 
 ## Tech Stack
 
@@ -93,8 +140,6 @@ async function inlineKeyboardDynamic() {
 
 - [@SeRzZzJ](https://github.com/SeRzZzJ)
 
-
 ## Support
 
 - [@SeRzZzJ](https://github.com/SeRzZzJ)
-

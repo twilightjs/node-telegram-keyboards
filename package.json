@@ -1,7 +1,7 @@
 {
-  "name": "telegram-bot-keyboard-generator",
-  "version": "0.0.1",
-  "description": "",
+  "name": "node-telegram-keyboards",
+  "version": "0.1.3",
+  "description": "Twilight.js telegram-keyboards is an asynchronous library that allows you to generate dynamic and static keyboards and allows you to save the finished keyboard template in json and return the keyboard back from the json templater",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,23 @@
     "url": "git+https://github.com/twilightjs/telegram-keyboards.git"
   },
   "author": "SeRzZzJ",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/twilightjs/telegram-keyboards/issues"
   },
   "homepage": "https://github.com/twilightjs/telegram-keyboards#readme",
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "keyboards",
+    "telegram",
+    "telegram-keyboards",
+    "bot",
+    "telegrambots",
+    "twilight",
+    "dynamic",
+    "dynamic-keyboards"
+  ]
 }
