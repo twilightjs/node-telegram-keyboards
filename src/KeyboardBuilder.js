@@ -96,7 +96,7 @@ export class KeyboardBuilder {
     static
     async templateFromJSON(pathToJSON) {
         return new Promise((resolve, reject) => {
-            readFile(pathToJSON, (err, data) => {
+            readFile(path.join(process.mainModule.path, pathToJSON), (err, data) => {
                 if (err) reject(err);
                 resolve(this.#templateJSON(JSON.parse(data.toString())));
             });
