@@ -1,15 +1,15 @@
 import { InlineKeyboardSelector } from "./InlineKeyboard.js";
-import { ReplyKeyboardSelector } from "./ReplyKeyboard.js";
+import { KeyboardSelector } from "./Keyboard.js";
 import { TemplateLayout } from "./tools/generators.js";
 import { writeFile, readFile } from "node:fs";
 
 export class KeyboardBuilder {
     /** 
      * @static
-     * @returns {ReplyKeyboardSelector} returns a static or dynamic ReplyKeyboard keyboard selector
+     * @returns {KeyboardSelector} returns a static or dynamic ReplyKeyboard keyboard selector
     */
     static keyboard() {
-        return new ReplyKeyboardSelector();
+        return new KeyboardSelector();
     }
     /** 
      * @static
