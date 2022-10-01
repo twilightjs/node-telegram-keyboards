@@ -1,16 +1,28 @@
+<<<<<<< HEAD
 import {InlineKeyboardSelector} from "./InlineKeyboard.js";
 import {ReplyKeyboardSelector} from "./ReplyKeyboard.js";
 import {TemplateLayout} from "./tools/generators.js";
 import {writeFile, readFile} from "node:fs";
 import * as path from "path";
+=======
+import { InlineKeyboardSelector } from "./InlineKeyboard.js";
+import { KeyboardSelector } from "./Keyboard.js";
+import { TemplateLayout } from "./tools/generators.js";
+import { writeFile, readFile } from "node:fs";
+>>>>>>> b6d34a2 (update doc #1)
 
 export class KeyboardBuilder {
     /**
      * @static
+<<<<<<< HEAD
      * @returns {ReplyKeyboardSelector} returns a static or dynamic ReplyKeyboard keyboard selector
      */
+=======
+     * @returns {KeyboardSelector} returns a static or dynamic ReplyKeyboard keyboard selector
+    */
+>>>>>>> b6d34a2 (update doc #1)
     static keyboard() {
-        return new ReplyKeyboardSelector();
+        return new KeyboardSelector();
     }
 
     /**

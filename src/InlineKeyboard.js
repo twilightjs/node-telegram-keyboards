@@ -34,7 +34,7 @@ export class InlineDynamicKeyboard extends InlineKeyboard {
 
 Object.assign(InlineDynamicKeyboard.prototype, DynamicAbstractKeyboard, DynamicInlineKeyboardCreator);
 
-export class InlineKeyboardButton {
+export class InlineKeyboardButtons {
     static url(text, url) {
         return {
             text: text,

@@ -6,17 +6,17 @@ import {
     LayoutBuilder
 } from "./tools/AbstractObject.js";
 
-export class ReplyKeyboardSelector {
+export class KeyboardSelector {
     static() {
-        return new StaticReplyKeyboard();
+        return new StaticKeyboard();
     }
 
     dynamic() {
-        return new DynamicReplyKeyboard();
+        return new DynamicKeyboard();
     }
 }
 
-class ReplyKeyboard {
+class Keyboard {
     _format = "keyboard";
     _field = {};
 
@@ -41,21 +41,21 @@ class ReplyKeyboard {
     }
 }
 
-Object.assign(ReplyKeyboard.prototype, LayoutBuilder);
+Object.assign(Keyboard.prototype, LayoutBuilder);
 
-export class StaticReplyKeyboard extends ReplyKeyboard {
+export class StaticKeyboard extends Keyboard {
     _type = "static";
 }
 
-Object.assign(StaticReplyKeyboard.prototype, StaticAbstractKeyboard, StaticReplyKeyboardCreator);
+Object.assign(StaticKeyboard.prototype, StaticAbstractKeyboard, StaticReplyKeyboardCreator);
 
-export class DynamicReplyKeyboard extends ReplyKeyboard {
+export class DynamicKeyboard extends Keyboard {
     _type = "dynamic";
 }
 
-Object.assign(DynamicReplyKeyboard.prototype, DynamicAbstractKeyboard, DynamicReplyKeyboardCreator);
+Object.assign(DynamicKeyboard.prototype, DynamicAbstractKeyboard, DynamicReplyKeyboardCreator);
 
-export class ReplyKeyboardButton {
+export class KeyboardButtons {
     static text(text) {
         return {
             text: text
