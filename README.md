@@ -17,7 +17,7 @@ node-telegram-keyboards is an asynchronous library that allows you to generate d
 		- [Keyboard](#keyboard)
 		- [KeyboardButtons](#keyboardbuttons)
 		- [InlineKeyboard](#inlinekeyboard)
-		- [InlineKeyboardButtons](#inlinekeyboardbutton)
+		- [InlineKeyboardButtons](#inlinekeyboardbuttons)
     - [TemplateLayout](#templatelayout)
 
 
@@ -38,14 +38,18 @@ $ npm i node-telegram-keyboards
 ## Examples
 
 ```javascript
+import {KeyboardBuilder} from "node-telegram-keyboards";
+import {KeyboardButtons} from "node-telegram-keyboards";
+import {InlineKeyboardButtons} from "node-telegram-keyboards";
+
 async function replyKeyboardStatic() {
     const keyboard = await KeyboardBuilder.keyboard().static()
         .buttons([
-            ReplyKeyboardButton.text("example"),
-            ReplyKeyboardButton.contact("example"),
-            ReplyKeyboardButton.location("example"),
-            ReplyKeyboardButton.poll("example", "quiz"),
-            ReplyKeyboardButton.webApp("example", "https://example.site/")
+            KeyboardButtons.text("example"),
+            KeyboardButtons.contact("example"),
+            KeyboardButtons.location("example"),
+            KeyboardButtons.poll("example", "quiz"),
+            KeyboardButtons.webApp("example", "https://example.site/")
         ])
         .layout((data, template) => template.topToBottom())
         .build();
@@ -60,10 +64,10 @@ async function replyKeyboardDynamic() {
         .map(async (element, storage, positionIndex) => {
             if (positionIndex % 2 == 0) {
                 storage.counter = + positionIndex;
-                return ReplyKeyboardButton.text(storage.counter);
+                return KeyboardButtons.text(storage.counter);
             }
             storage.counter = + positionIndex;
-            return ReplyKeyboardButton.text(element);
+            return KeyboardButtons.text(element);
         })
         .layout((data, template) => template.topToBottom())
         .build();
@@ -72,14 +76,14 @@ async function replyKeyboardDynamic() {
 async function inlineKeyboardStatic() {
     const inlineKeyboard = await KeyboardBuilder.inlineKeyboard().static()
         .buttons([
-            InlineKeyboardButton.url("example", "https://example.site/"),
-            InlineKeyboardButton.callbackData("example", "exampleData"),
-            InlineKeyboardButton.webApp("example", "https://example.site/"),
-            InlineKeyboardButton.loginUrl("example", "https://example.site/"),
-            InlineKeyboardButton.switchInlineQuery("example", "query"),
-            InlineKeyboardButton.switchInlineQueryCurrentChat("example", "query"),
-            InlineKeyboardButton.callbackGame("example", "callbackGame"),
-            InlineKeyboardButton.pay("example")
+           InlineKeyboardButtons.url("example", "https://example.site/"),
+           InlineKeyboardButtons.callbackData("example", "exampleData"),
+           InlineKeyboardButtons.webApp("example", "https://example.site/"),
+           InlineKeyboardButtons.loginUrl("example", "https://example.site/"),
+           InlineKeyboardButtons.switchInlineQuery("example", "query"),
+           InlineKeyboardButtons.switchInlineQueryCurrentChat("example", "query"),
+           InlineKeyboardButtons.callbackGame("example", "callbackGame"),
+           InlineKeyboardButtons.pay("example")
         ])
         .layout((data, template) => template.topToBottom())
         .build();
@@ -94,10 +98,10 @@ async function inlineKeyboardDynamic() {
         .map(async (element, storage, positionIndex) => {
             if (positionIndex % 2 == 0) {
                 storage.counter = + positionIndex;
-                return InlineKeyboardButton.callbackData(element, storage.counter);
+                return InlineKeyboardButtons.callbackData(element, storage.counter);
             }
             storage.counter = + positionIndex;
-            return InlineKeyboardButton.callbackData(element, positionIndex);
+            return InlineKeyboardButtons.callbackData(element, positionIndex);
         })
         .layout((data, template) => template.topToBottom())
         .build();
@@ -122,15 +126,15 @@ In static implementation:
 
 | Method| Parameters  | Description |
 | ------ | ---------- | ------------------ |
-| buttons(buttons) |buttons: array, array of KeyboardButtons or InlineKeyboardButtons|An array of buttons to which you need to pass KeyboardButtons or InlineKeyboardButtons objects, depending on which keyboard you are building Keyboard or InlineKeyboard|
+| buttons(buttons) |buttons: array, array of KeyboardButtons orInlineKeyboardButtonss|An array of buttons to which you need to pass KeyboardButtons orInlineKeyboardButtonss objects, depending on which keyboard you are building Keyboard or InlineKeyboard|
 
 In dynamic implementation:
 
 | Method| Parameters  | Description |
 | --------- | --------------------- | -------------------- |
-| data(array, start, end) |array: array, start: number, end: number |It takes an array of data as input, which it then converts to KeyboardButtons or InlineKeyboardButtons, the start and end parameters are needed to indicate from which position to take elements for buttons, by default the entire array is taken, they can be omitted |
-| use(callbackfn) |async/sync (storage: object, data: array) => storage|It accepts a callback function as input, which initializes the store, which is passed to the callback function in the map method, in this store you can pass data between KeyboardButtons or InlineKeyboardButtons|
-| map(callbackfn) |async/sync (element: the type is equal to the type of the element retrieved from the data , storage: object, positionIndex: number) => KeyboardButtons or InlineKeyboardButtons |It accepts a callback function as input, which is called for each element from the data array and converts it to KeyboardButtons or InlineKeyboardButtons |
+| data(array, start, end) |array: array, start: number, end: number |It takes an array of data as input, which it then converts to KeyboardButtons orInlineKeyboardButtonss, the start and end parameters are needed to indicate from which position to take elements for buttons, by default the entire array is taken, they can be omitted |
+| use(callbackfn) |async/sync (storage: object, data: array) => storage|It accepts a callback function as input, which initializes the store, which is passed to the callback function in the map method, in this store you can pass data between KeyboardButtons orInlineKeyboardButtonss|
+| map(callbackfn) |async/sync (element: the type is equal to the type of the element retrieved from the data , storage: object, positionIndex: number) => KeyboardButtons orInlineKeyboardButtonss |It accepts a callback function as input, which is called for each element from the data array and converts it to KeyboardButtons orInlineKeyboardButtonss |
 
 For all implementations:
 
@@ -142,7 +146,7 @@ For all implementations:
 ### Keyboard
 ### KeyboardButtons
 ### InlineKeyboard
-### InlineKeyboardButtons
+###InlineKeyboardButtonss
 ### TemplateLayout
 
 ## Tech Stack
