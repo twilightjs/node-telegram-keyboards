@@ -1,8 +1,8 @@
 import {
     StaticAbstractKeyboard,
     DynamicAbstractKeyboard,
-    StaticReplyKeyboardCreator,
-    DynamicReplyKeyboardCreator,
+    StaticKeyboardCreator,
+    DynamicKeyboardCreator,
     LayoutBuilder
 } from "./tools/AbstractObject.js";
 
@@ -47,13 +47,13 @@ export class StaticKeyboard extends Keyboard {
     _type = "static";
 }
 
-Object.assign(StaticKeyboard.prototype, StaticAbstractKeyboard, StaticReplyKeyboardCreator);
+Object.assign(StaticKeyboard.prototype, StaticAbstractKeyboard, StaticKeyboardCreator);
 
 export class DynamicKeyboard extends Keyboard {
     _type = "dynamic";
 }
 
-Object.assign(DynamicKeyboard.prototype, DynamicAbstractKeyboard, DynamicReplyKeyboardCreator);
+Object.assign(DynamicKeyboard.prototype, DynamicAbstractKeyboard, DynamicKeyboardCreator);
 
 export class KeyboardButtons {
     static text(text) {

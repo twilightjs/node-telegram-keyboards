@@ -132,9 +132,10 @@ In dynamic implementation:
 
 | Method| Parameters  | Description |
 | --------- | --------------------- | -------------------- |
-| data(array, start, end) |array: array, start: number, end: number |It takes an array of data as input, which it then converts to KeyboardButtons orInlineKeyboardButtonss, the start and end parameters are needed to indicate from which position to take elements for buttons, by default the entire array is taken, they can be omitted |
-| use(callbackfn) |async/sync (storage: object, data: array) => storage|It accepts a callback function as input, which initializes the store, which is passed to the callback function in the map method, in this store you can pass data between KeyboardButtons orInlineKeyboardButtonss|
-| map(callbackfn) |async/sync (element: the type is equal to the type of the element retrieved from the data , storage: object, positionIndex: number) => KeyboardButtons orInlineKeyboardButtonss |It accepts a callback function as input, which is called for each element from the data array and converts it to KeyboardButtons orInlineKeyboardButtonss |
+| use(callbackfn) |async/sync () => array|It takes as input a callback function that is called once and, depending on what conditions it processes, should return an array of KeyboardButtons or InlineKeyboardButtons|
+| data(array, start, end) |array: array, start: number, end: number |It takes an array of data as input, which it then converts to KeyboardButtons orInlineKeyboardButtons, the start and end parameters are needed to indicate from which position to take elements for buttons, by default the entire array is taken, they can be omitted |
+| storage(callbackfn) |async/sync (storage: object, data: array) => storage|It accepts a callback function as input, which initializes the store, which is passed to the callback function in the map method, in this store you can pass data between KeyboardButtons orInlineKeyboardButtons|
+| map(callbackfn) |async/sync (element: the type is equal to the type of the element retrieved from the data , storage: object, positionIndex: number) => KeyboardButtons orInlineKeyboardButtons |It accepts a callback function as input, which is called for each element from the data array and converts it to KeyboardButtons orInlineKeyboardButtons |
 
 For all implementations:
 
