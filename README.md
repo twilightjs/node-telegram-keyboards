@@ -20,7 +20,6 @@ node-telegram-keyboards is an asynchronous library that allows you to generate d
 		- [InlineKeyboardButtons](#inlinekeyboardbuttons)
     - [TemplateLayout](#templatelayout)
 
-
 ## Features
 
 - Easy to generate keyboards of any complexity

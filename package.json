@@ -1,6 +1,6 @@
 {
-  "name": "node-telegram-keyboards",
-  "version": "0.2.0",
+  "name": "twilight-telegram-keyboards",
+  "version": "1.0.0",
   "description": "Twilight.js telegram-keyboards is an asynchronous library that allows you to generate dynamic and static keyboards and allows you to save the finished keyboard template in json and return the keyboard back from the json templater",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,6 @@
     "url": "https://github.com/twilightjs/telegram-keyboards/issues"
   },
   "homepage": "https://github.com/twilightjs/telegram-keyboards#readme",
-  "type": "module",
   "engines": {
     "node": ">=18"
   },
